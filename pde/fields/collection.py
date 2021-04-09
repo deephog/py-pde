@@ -349,6 +349,7 @@ class FieldCollection(FieldBase):
         grid: GridBase,
         vmin: float = 0,
         vmax: float = 1,
+        seed: Optional[int] = None,
         label: Optional[str] = None,
         labels: Optional[Sequence[str]] = None,
     ) -> "FieldCollection":
@@ -367,7 +368,7 @@ class FieldCollection(FieldBase):
             labels = [None] * num_fields  # type: ignore
         return cls(
             [
-                ScalarField.random_uniform(grid, vmin, vmax, label=labels[i])
+                ScalarField.random_uniform(grid, vmin, vmax, seed=seed, label=labels[i])
                 for i in range(num_fields)
             ],
             label=label,
